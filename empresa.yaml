@@ -378,7 +378,7 @@ comportamento_do_cliente:
     idade: 50
     sexo: Masculino
     cidade: Belo Horizonte
-    valor_gasto_total:15000.00
+    valor_gasto_total: 15000.00
   - id: 104
     nome: Ana Santos
     idade: 55
