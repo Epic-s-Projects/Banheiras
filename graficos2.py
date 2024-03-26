@@ -1,9 +1,11 @@
+from datetime import datetime
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
 import yaml
+import seaborn as sns
 
 # Carregar dados do arquivo YAML
 with open('empresa.yaml', 'r') as file:
@@ -49,7 +51,7 @@ desempenho_do_produto:
   - produto: Banheira
     vendas_totais: 32
     receita_total: 80000.0
-  - produto: Ofurô
+  - produto: Ofuro
     vendas_totais: 41
     receita_total: 123000.0
   - produto: Spa
@@ -138,6 +140,90 @@ def plot_dispersao_fieis():
     plt.grid(True)
     plt.tight_layout()
 
+# Dicionário para armazenar preços por produto
+precos_por_produto = {}
+
+# Organizar os preços por produto
+for venda in dados_empresa['vendas']:
+    produto = venda['produto']
+    preco = venda['preco_unitario']
+    # Ajustar nome do produto para considerar caracteres especiais
+    produto = produto.lower().capitalize()
+    if produto not in precos_por_produto:
+        precos_por_produto[produto] = [preco]
+    else:
+        precos_por_produto[produto].append(preco)
+
+# Lista de preços para cada produto
+precos_banheira = precos_por_produto['Banheira']
+precos_ofuro = precos_por_produto['Ofuro']
+precos_spa = precos_por_produto['Spa']
+
+# Unir todos os preços em uma lista para calcular a média
+todos_os_precos = precos_banheira + precos_ofuro + precos_spa
+
+# Calcular preço médio
+preco_medio = sum(todos_os_precos) / len(todos_os_precos)
+
+def distribuicao_precos():
+    # plt.figure(figsize=(10, 6))
+    boxprops = dict(facecolor='lightblue', color='blue')
+    medianprops = dict(color='red')
+    meanprops = dict(marker='o', markerfacecolor='yellow', markeredgecolor='black', markersize=10)
+    plt.boxplot([precos_banheira, precos_ofuro, precos_spa], labels=['Banheira', 'Ofuro', 'Spa'], patch_artist=True, showmeans=True, meanline=True, boxprops=boxprops, medianprops=medianprops, meanprops=meanprops)
+    plt.text(2, preco_medio, f'Média Geral: R${preco_medio:.2f}', fontsize=10, ha='center', va='bottom', color='blue')
+    plt.title('Distribuição de Preços dos Produtos', fontsize=16)
+    plt.xlabel('Produto', fontsize=14)
+    plt.ylabel('Preço (R$)', fontsize=14)
+    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.tight_layout()
+
+
+# Processar os dados para calcular as vendas mensais
+vendas_mensais = {}
+for venda in dados_empresa['vendas']:
+    data_venda = datetime.strptime(venda['data'], '%Y-%m-%d')
+    mes_venda = data_venda.strftime('%Y-%m')
+    quantidade = venda['quantidade']
+    if mes_venda in vendas_mensais:
+        vendas_mensais[mes_venda] += quantidade
+    else:
+        vendas_mensais[mes_venda] = quantidade
+
+# Ordenar as vendas mensais por data
+vendas_mensais = dict(sorted(vendas_mensais.items()))
+
+# Extrair as datas e quantidades para plotagem
+datas = list(vendas_mensais.keys())
+quantidades = list(vendas_mensais.values())
+
+def evolucao_vendas():
+    plt.plot(datas, quantidades, marker='o', color='b', linestyle='-')
+    plt.title('Evolução das Vendas Mensais')
+    plt.xlabel('Mês')
+    plt.ylabel('Quantidade Vendida')
+    plt.xticks(rotation=45)
+    plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+    plt.tight_layout()
+
+
+# gráficos mais avançados
+# Criar DataFrames a partir dos dados
+vendas_df = pd.DataFrame(dados_empresa['vendas'])
+cliente_df = pd.DataFrame(dados_empresa['comportamento_do_cliente'])
+produto_df = pd.DataFrame(dados_empresa['desempenho_do_produto'])
+
+# Juntar os DataFrames de vendas e clientes
+vendas_completo_df = vendas_df.merge(cliente_df, left_on='cliente_id', right_on='id')
+
+def grafico_avancado():
+    # Criar gráfico de dispersão da idade dos clientes versus o valor gasto total
+    sns.scatterplot(data=vendas_completo_df, x='idade', y='valor_gasto_total', hue='sexo')
+    plt.title('Idade dos Clientes vs Valor Gasto Total')
+    plt.xlabel('Idade')
+    plt.ylabel('Valor Gasto Total')
+    plt.tight_layout()
+
 # Criação da interface gráfica com Tkinter
 root = tk.Tk()
 root.title("Gráficos da Empresa")
@@ -152,7 +238,10 @@ graficos = {
     "Produtos Mais Vendidos": plot_produtos_mais_vendidos,
     "Distribuição da Receita por Produto": plot_distribuicao_receita,
     "Histograma dos Gastos dos Clientes": plot_histograma_gastos,
-    "Valor Total Gasto vs Frequência de Compras dos 5 Clientes Mais Fiéis": plot_dispersao_fieis
+    "5 Clientes Mais Fiéis": plot_dispersao_fieis,
+    "Distribuicao de preço": distribuicao_precos,
+    "Evolução das Vendas": evolucao_vendas,
+    "Gráfico Avançado": grafico_avancado
 }
 
 
