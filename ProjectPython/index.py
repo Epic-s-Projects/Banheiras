@@ -4,29 +4,36 @@ from turtle import title
 from matplotlib.figure import Figure
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import yaml
 
 
 #installing PyYAML
 
 
+def mostrar_venda_mes_gui(tab):
+    # Aqui você adiciona a lógica da função mostrar_venda_mes
+    fig = mostrar_venda_mes() # Supondo que essa função retorna um objeto Figure
+    
+    # Cria o canvas para o Matplotlib no Tkinter e o adiciona à aba específica
+    canvas = FigureCanvasTkAgg(fig, master=tab)
+    canvas.draw()
+    canvas.get_tk_widget().pack()
+
 app = tk.Tk()
 app.title('Análise de dados')
-app.geometry('900x900') #largura - altura
+app.geometry('900x900')
 
 nb = ttk.Notebook(app)
-
-nb.place(x=0,y=0, width= 900, height=900)
+nb.place(x=0, y=0, width=900, height=900)
 
 tab1 = ttk.Frame(nb)
 nb.add(tab1, text="Cursos")
 
-tab2 = ttk.Frame(nb)
-nb.add(tab2, text="Cursos 2")
+# Botão para exibir o gráfico de vendas na primeira aba
+btn_mostrar_grafico = ttk.Button(tab1, text="Mostrar Vendas por Mês", command=lambda: mostrar_venda_mes_gui(tab1))
+btn_mostrar_grafico.pack()
 
-
-lb1 = ttk.Label(tab1, text="a")
-lb1.pack()
 app.mainloop()
 
 def mostrar_venda_mes():
