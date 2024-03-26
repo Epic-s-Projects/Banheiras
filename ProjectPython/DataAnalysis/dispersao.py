@@ -3,8 +3,6 @@ import pandas as pd
 import yaml
 import matplotlib.pyplot as plt
 
-# Supondo que 'df' é o seu DataFrame
-# Exemplo: df = pd.DataFrame({'x': ..., 'y': ..., 'categoria': ...})
 
 with open('/home/alberto-linux/RepositoriosGitHub/Banheiras/ProjectPython/DataAnalysis/company.yaml', 'r') as file:
     data = yaml.safe_load(file)

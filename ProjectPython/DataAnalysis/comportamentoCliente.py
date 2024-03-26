@@ -15,7 +15,7 @@ plt.figure(figsize=(10, 6))
 plt.boxplot(vendas_df['preco_unitario'].dropna())
 plt.title('Distribuição dos Preços dos Produtos')
 plt.ylabel('Preço Unitário')
-plt.xticks([1], ['Produtos'])  # Adicionando um rótulo no eixo x para clareza
+plt.xticks([1], ['Produtos'])  
 
 # Mostrando o gráfico
 plt.show()
