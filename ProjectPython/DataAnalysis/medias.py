@@ -10,7 +10,6 @@ with open('/home/alberto-linux/RepositoriosGitHub/Banheiras/ProjectPython/DataAn
 # Criando DataFrame a partir da seção 'comportamento_do_cliente'
 clientes_df = pd.DataFrame(data['comportamento_do_cliente'])
 
-# Certifique-se de que 'idade' e 'valor_gasto_total' são numéricas
 clientes_df['idade'] = pd.to_numeric(clientes_df['idade'], errors='coerce')
 clientes_df['valor_gasto_total'] = pd.to_numeric(clientes_df['valor_gasto_total'], errors='coerce')
 
@@ -30,7 +29,7 @@ plt.bar(estatisticas_plot['Estatística'], estatisticas_plot['Valor'], color=['b
 plt.title('Estatísticas Descritivas da Idade')
 plt.xlabel('Estatística')
 plt.ylabel('Valor')
-plt.xticks(rotation=45)  # Rotação dos rótulos para melhor visualização
+plt.xticks(rotation=45)  
 
 # Mostrando o gráfico
 plt.show()

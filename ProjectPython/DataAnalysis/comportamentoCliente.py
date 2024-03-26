@@ -8,7 +8,7 @@ with open('/home/alberto-linux/RepositoriosGitHub/Banheiras/ProjectPython/DataAn
     vendas_df = pd.DataFrame(data['vendas'])
 
 
-# Convertendo 'preco_unitario' para numérico, se necessário
+# Convertendo 'preco_unitario' para numérico
 vendas_df['preco_unitario'] = pd.to_numeric(vendas_df['preco_unitario'], errors='coerce')
 # Plotando o gráfico de caixa para 'preco_unitario'
 plt.figure(figsize=(10, 6))
