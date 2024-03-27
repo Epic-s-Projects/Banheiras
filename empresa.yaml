@@ -7,7 +7,7 @@ vendas:
     cliente_id: 101
   - id: 2
     data: '2023-02-12'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 1
     preco_unitario: 3000.00
     cliente_id: 113
@@ -25,7 +25,7 @@ vendas:
     cliente_id: 104
   - id: 5
     data: '2023-05-15'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 2
     preco_unitario: 3000.00
     cliente_id: 105
@@ -43,7 +43,7 @@ vendas:
     cliente_id: 113
   - id: 8
     data: '2023-08-18'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 3
     preco_unitario: 3000.00
     cliente_id: 108
@@ -61,7 +61,7 @@ vendas:
     cliente_id: 110
   - id: 11
     data: '2023-11-12'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 1
     preco_unitario: 3000.00
     cliente_id: 111
@@ -79,7 +79,7 @@ vendas:
     cliente_id: 101
   - id: 14
     data: '2023-02-12'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 1
     preco_unitario: 3000.00
     cliente_id: 102
@@ -97,7 +97,7 @@ vendas:
     cliente_id: 104
   - id: 17
     data: '2023-05-15'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 3
     preco_unitario: 3000.00
     cliente_id: 105
@@ -115,7 +115,7 @@ vendas:
     cliente_id: 107
   - id: 20
     data: '2023-08-18'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 2
     preco_unitario: 3000.00
     cliente_id: 108
@@ -133,7 +133,7 @@ vendas:
     cliente_id: 113
   - id: 23
     data: '2023-11-12'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 2
     preco_unitario: 3000.00
     cliente_id: 111
@@ -151,7 +151,7 @@ vendas:
     cliente_id: 113
   - id: 26
     data: '2023-02-12'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 3
     preco_unitario: 3000.00
     cliente_id: 102
@@ -169,7 +169,7 @@ vendas:
     cliente_id: 113
   - id: 29
     data: '2023-05-15'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 2
     preco_unitario: 3000.00
     cliente_id: 105
@@ -187,7 +187,7 @@ vendas:
     cliente_id: 113
   - id: 32
     data: '2023-08-18'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 3
     preco_unitario: 3000.00
     cliente_id: 108
@@ -205,7 +205,7 @@ vendas:
     cliente_id: 113
   - id: 35
     data: '2023-11-12'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 1
     preco_unitario: 3000.00
     cliente_id: 111
@@ -223,7 +223,7 @@ vendas:
     cliente_id: 101
   - id: 38
     data: '2023-02-12'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 1
     preco_unitario: 3000.00
     cliente_id: 102
@@ -241,7 +241,7 @@ vendas:
     cliente_id: 104
   - id: 41
     data: '2023-05-15'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 3
     preco_unitario: 3000.00
     cliente_id: 113
@@ -259,7 +259,7 @@ vendas:
     cliente_id: 113
   - id: 44
     data: '2023-08-18'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 2
     preco_unitario: 3000.00
     cliente_id: 108
@@ -277,7 +277,7 @@ vendas:
     cliente_id: 110
   - id: 47
     data: '2023-11-12'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 2
     preco_unitario: 3000.00
     cliente_id: 113
@@ -295,7 +295,7 @@ vendas:
     cliente_id: 101
   - id: 50
     data: '2023-02-12'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 3
     preco_unitario: 3000.00
     cliente_id: 102
@@ -313,7 +313,7 @@ vendas:
     cliente_id: 113
   - id: 53
     data: '2023-05-15'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 2
     preco_unitario: 3000.00
     cliente_id: 105
@@ -331,7 +331,7 @@ vendas:
     cliente_id: 107
   - id: 56
     data: '2023-08-18'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 3
     preco_unitario: 3000.00
     cliente_id: 108
@@ -349,7 +349,7 @@ vendas:
     cliente_id: 113
   - id: 59
     data: '2023-11-12'
-    produto: Ofurô
+    produto: Ofuro
     quantidade: 1
     preco_unitario: 3000.00
     cliente_id: 111
@@ -361,91 +361,91 @@ vendas:
     cliente_id: 112
 
 comportamento_do_cliente:
-  - id: 101
-    nome: João da Silva
-    idade: 45
-    sexo: Masculino
-    cidade: São Paulo
-    valor_gasto_total: 
-  - id: 102
-    nome: Maria Oliveira
-    idade: 38
-    sexo: Feminino
-    cidade: Rio de Janeiro
-    valor_gasto_total: 
-  - id: 103
-    nome: Carlos Souza
-    idade: 50
-    sexo: Masculino
-    cidade: Belo Horizonte
-    valor_gasto_total: 15000.00
-  - id: 104
-    nome: Ana Santos
-    idade: 55
-    sexo: Feminino
-    cidade: Porto Alegre
-    valor_gasto_total: 
-  - id: 105
-    nome: Pedro Costa
-    idade: 42
-    sexo: Masculino
-    cidade: Brasília
-    valor_gasto_total: 
-  - id: 106
-    nome: Sofia Pereira
-    idade: 48
-    sexo: Feminino
-    cidade: Recife
-    valor_gasto_total: 
-  - id: 107
-    nome: José Santos
-    idade: 60
-    sexo: Masculino
-    cidade: Salvador
-    valor_gasto_total: 
-  - id: 108
-    nome: Paula Lima
-    idade: 36
-    sexo: Feminino
-    cidade: Fortaleza
-    valor_gasto_total: 
-  - id: 109
-    nome: Luiz Oliveira
-    idade: 47
-    sexo: Masculino
-    cidade: Manaus
-    valor_gasto_total: 
-  - id: 110
-    nome: Cristina Santos
-    idade: 52
-    sexo: Feminino
-    cidade: Curitiba
-    valor_gasto_total: 
-  - id: 111
-    nome: Antonio Costa
-    idade: 40
-    sexo: Masculino
-    cidade: Natal
-    valor_gasto_total: 
-  - id: 112
-    nome: Beatriz Silva
-    idade: 43
-    sexo: Feminino
-    cidade: Florianópolis
-    valor_gasto_total: 
-  - id: 113
-    nome: Loja Propria
-    sexo: 
-    cidade: Limeira
-    valor_gasto_total:
+ - id: 101
+   idade: 45
+   nome: "João da Silva"
+   sexo: Masculino
+   cidade: "São Paulo"
+   valor_gasto_total: 25000.0
+ - id: 102
+   idade: 38
+   nome: Maria Oliveira
+   sexo: Feminino
+   cidade: Rio de Janeiro
+   valor_gasto_total: 24000.0
+ - id: 103
+   idade: 50
+   nome: Carlos Souza
+   sexo: Masculino
+   cidade: Belo Horizonte
+   valor_gasto_total: 45000.0
+ - id: 104
+   idade: 55
+   nome: Ana Santos
+   sexo: Feminino
+   cidade: Porto Alegre
+   valor_gasto_total: 12500.0
+ - id: 105
+   idade: 42
+   nome: Pedro Costa
+   sexo: Masculino
+   cidade: "Brasília"
+   valor_gasto_total: 27000.0
+ - id: 106
+   idade: 48
+   nome: Sofia Pereira
+   sexo: Feminino
+   cidade: Recife
+   valor_gasto_total: 40000.0
+ - id: 107
+   idade: 60
+   nome: "José Santos"
+   sexo: Masculino
+   cidade: Salvador
+   valor_gasto_total: 5000.0
+ - id: 108
+   idade: 36
+   nome: Paula Lima
+   sexo: Feminino
+   cidade: Fortaleza
+   valor_gasto_total: 39000.0
+ - id: 109
+   idade: 47
+   nome: Luiz Oliveira
+   sexo: Masculino
+   cidade: Manaus
+   valor_gasto_total: 45000.0
+ - id: 110
+   idade: 52
+   nome: Cristina Santos
+   sexo: Feminino
+   cidade: Curitiba
+   valor_gasto_total: 7500.0
+ - id: 111
+   idade: 40
+   nome: Antonio Costa
+   sexo: Masculino
+   cidade: Natal
+   valor_gasto_total: 15000.0
+ - id: 112
+   idade: 43
+   nome: Beatriz Silva
+   sexo: Feminino
+   cidade: "Florianópolis"
+   valor_gasto_total: 55000.0
+ - id: 113
+   nome: Loja Propria
+   sexo: null
+   cidade: Limeira
+   valor_gasto_total: 48000.0
 
 desempenho_do_produto:
-  - produto: Banheira
-    vendas_totais: 
-    receita_total: 
-  - produto: Ofurô
-    vendas_totais: 
-    receita_total: 
-  - produto: Spa
-    vendas_totais: 
-    receita_total: 
+ - produto: Banheira
+   vendas_totais: 32
+   receita_total: 80000.0
+ - produto: Ofuro
+   vendas_totais: 41
+   receita_total: 123000.0
+ - produto: Spa
+   vendas_totais: 37
+   receita_total: 185000.0
