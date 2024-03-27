@@ -56,6 +56,7 @@ valores_ausentes = df_vendas.isnull().sum()
 print(estatisticas_descritivas)
 print(valores_ausentes)
 
+
 # Dados sobre o desempenho dos produtos
 desempenho_produto = """
 desempenho_do_produto:
@@ -81,9 +82,19 @@ receita_total = [produto['receita_total'] for produto in dados_desempenho_produt
 # Identificar os produtos mais vendidos
 produto_mais_vendido = produtos[vendas_totais.index(max(vendas_totais))]
 
+# Definir cores com base no desempenho de vendas
+cores = []
+for vendas in vendas_totais:
+    if vendas == max(vendas_totais):
+        cores.append('green')  # Barra maior em verde
+    elif vendas == min(vendas_totais):
+        cores.append('red')  # Barra menor em vermelho
+    else:
+        cores.append('yellow')  # Barra média em amarelo
+
 # Plotar um gráfico de barras mostrando os produtos mais vendidos
 def plot_produtos_mais_vendidos():
-    plt.bar(produtos, vendas_totais, color='skyblue')
+    plt.bar(produtos, vendas_totais, color=cores)
     plt.title('Produtos Mais Vendidos')
     plt.xlabel('Produto')
     plt.ylabel('Vendas Totais')
