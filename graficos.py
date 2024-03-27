@@ -152,9 +152,10 @@ frequencia_compras = [frequencia_de_compras[cliente_id] for cliente_id, _ in cli
 def plot_dispersao_fieis():
     plt.scatter(valores_gastos, frequencia_compras, color='blue', alpha=0.7)
 
-    # Adicionar os nomes dos clientes ao gráfico
-    for nome, valor_gasto, frequencia in zip(nomes_clientes, valores_gastos, frequencia_compras):
-        plt.text(valor_gasto, frequencia, nome, fontsize=9)
+    # Adicionar os nomes dos clientes ao gráfico com deslocamento vertical
+    deslocamento_vertical = [0, 0.1, -0.1, 0.15, -0.15]  # Deslocamentos para cada nome (aumentados)
+    for nome, valor_gasto, frequencia, deslocamento in zip(nomes_clientes, valores_gastos, frequencia_compras, deslocamento_vertical):
+        plt.text(valor_gasto, frequencia + deslocamento, nome, fontsize=9)
 
     plt.title('Valor Total Gasto vs Frequência de Compras dos 5 Clientes Mais Fiéis')
     plt.xlabel('Valor Total Gasto (R$)')
