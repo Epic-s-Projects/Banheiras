@@ -38,7 +38,7 @@ if len(set(total_vendas_por_mes[top3_indices])) == 1:
 
 # Plotar o gráfico de barras mostrando o total de vendas por mês
 def plot_total_vendas():
-    cores = ['red' if v < total_vendas_por_mes.median() else 'yellow' if i in top3_indices else 'green' for i, v in enumerate(total_vendas_por_mes.values)]
+    cores = ['lightcoral' if v < total_vendas_por_mes.median() else '#FFFF00' if i in top3_indices else 'lightgreen' for i, v in enumerate(total_vendas_por_mes.values)]
     plt.bar(total_vendas_por_mes.index, total_vendas_por_mes.values, color=cores, edgecolor='black')
     plt.title('Total de Vendas por Mês')
     plt.xlabel('Mês')
@@ -86,11 +86,11 @@ produto_mais_vendido = produtos[vendas_totais.index(max(vendas_totais))]
 cores = []
 for vendas in vendas_totais:
     if vendas == max(vendas_totais):
-        cores.append('green')  # Barra maior em verde
+        cores.append('lightgreen')  # Barra maior em verde
     elif vendas == min(vendas_totais):
-        cores.append('red')  # Barra menor em vermelho
+        cores.append('lightcoral')  # Barra menor em vermelho
     else:
-        cores.append('yellow')  # Barra média em amarelo
+        cores.append('#FFFF00')  # Barra média em amarelo
 
 # Plotar um gráfico de barras mostrando os produtos mais vendidos
 def plot_produtos_mais_vendidos():
@@ -103,7 +103,7 @@ def plot_produtos_mais_vendidos():
 
 # Plotar um gráfico de pizza mostrando a distribuição da receita entre os produtos
 def plot_distribuicao_receita():
-    plt.pie(receita_total, labels=produtos, autopct='%1.1f%%', colors=['lightcoral', 'lightskyblue', 'lightgreen'])
+    plt.pie(receita_total, labels=produtos, autopct='%1.1f%%', colors=['lightcoral', '#FFFF00', 'lightgreen'])
     plt.title('Distribuição da Receita por Produto')
     plt.axis('equal')
     plt.tight_layout()
@@ -126,6 +126,11 @@ def plot_histograma_gastos():
     plt.xticks(intervalos)
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
+    
+    patches = plt.gca().patches
+    colors = ['#FFFF00', '#FFFF00', 'lightgreen', 'lightcoral', 'lightgreen', 'lightcoral']
+    for i in range(len(patches)):
+        patches[i].set_facecolor(colors[i])
 
 # Processar dados das vendas para calcular valor total gasto e frequência de compras por cliente
 total_gasto_por_cliente = {}
@@ -247,6 +252,22 @@ def grafico_avancado():
     plt.ylabel('Valor Gasto Total')
     plt.tight_layout()
 
+
+
+df = pd.DataFrame(dados_empresa['vendas'])
+
+
+def grafico_avancado2():
+    sns.scatterplot(data=df, x='produto', y='quantidade', hue='preco_unitario')
+    plt.title('Gráfico de Dispersão com Categorias')
+    plt.xlabel('Variável X')
+    plt.ylabel('Variável Y')
+    # Calculando a matriz de correlação
+    # correlacao = df.corr()
+    # sns.heatmap(correlacao, annot=True, cmap='coolwarm', fmt=".2f")
+    plt.tight_layout()
+
+
 # Criação da interface gráfica com Tkinter
 root = tk.Tk()
 root.title("Gráficos da Empresa")
@@ -264,7 +285,8 @@ graficos = {
     "Histograma dos Gastos dos Clientes": plot_histograma_gastos,
     "5 Clientes Mais Fiéis": plot_dispersao_fieis,
     "Distribuicao de preço": distribuicao_precos,
-    "Gráfico Avançado": grafico_avancado
+    "Gráfico Avançado": grafico_avancado,
+    "Gráfico Avançado 2": grafico_avancado2
 }
 
 
