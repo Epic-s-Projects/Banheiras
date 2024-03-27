@@ -9,37 +9,45 @@ from tkinter import ttk
 with open('empresa.yaml') as file:
     dados_yaml = yaml.safe_load(file)
 
-# Converter para DataFrame
+# Criando DataFrame a partir da seção 'vendas'
 df = pd.DataFrame(dados_yaml['vendas'])
-# Converter a coluna 'data' para o tipo datetime
+# Convertendo a coluna 'data' para o formato de data
 df['data'] = pd.to_datetime(df['data'])
-# Exatrair mês e ano da data
-df['ano_mes'] = df['data'].dt.to_period('M')
-
-vendas_por_ano_mes = df.groupby('ano_mes').size()
-
-# Criando um janela
-janela = tk.Tk()
-janela.title("Teste Abas")
+# Calculando a coluna 'receita'
+df['receita'] = df['quantidade'] * df['preco_unitario']
+# Calculando a receita total por data
+vendas_por_data = df.groupby('data')['receita'].sum()
+# Ordenando as vendas por data
+vendas_por_data = vendas_por_data.sort_index()
 
 def grafico_evolucao_temporal():
     # Criando o frame para o gráfico
     frame_grafico = tk.Frame(abas)
 
     # Criando o gráfico
-    fig = plt.Figure(figsize=(8, 6))
-    ax = fig.add_subplot(111)
-    ax.plot(vendas_por_ano_mes.index.to_timestamp(), vendas_por_ano_mes.values, color='green')
-    ax.set_title("Evolução de vendas")
-    ax.set_xlabel('Data')
-    ax.set_ylabel('Número de Vendas')
+    # fig = plt.Figure(figsize=(8, 6))
+    # ax = fig.add_subplot(111)
+    # ax.plot(vendas_por_ano_mes.index.to_timestamp(), vendas_por_ano_mes.values, color='green')
+    # ax.set_title("Evolução de vendas")
+    # ax.set_xlabel('Data')
+    # ax.set_ylabel('Número de Vendas')
+    
+    # Plotando gráfico de linha para a evolução da receita ao longo do tempo
+    fig = plt.Figure(figsize=(8, 4))
+    fig.add_subplot(111)
+    plt.plot(vendas_por_data.index, vendas_por_data.values, marker='o', linestyle='-', color='b')
+    # Adicionando título e rótulos
+    plt.title('Evolução da Receita ao Longo do Tempo')
+    plt.xlabel('Data')
+    plt.ylabel('Receita Total')
+    plt.xticks(rotation=45)
 
-    # Colocando o gráfico no frame
-    canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
-    canvas.draw()
-    canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+    plt.show()
 
-    return frame_grafico
+# Criando um janela
+janela = tk.Tk()
+janela.title("Teste Abas")
+
 
 # Notebook é utilizado como controle entre as abas
 abas = ttk.Notebook(janela)
